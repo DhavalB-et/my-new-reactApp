@@ -1,0 +1,6 @@
+Primary Background - #F9F9F6
+Text / Headings -	Charcoal -	#333333	
+Accent Color 1 - Beige - #D8C3A5
+Accent Color 2 -	Warm Gray - #B2A89F
+CTA or Highlight - Muted Gold - #C9A46A
+Hpver btn - #A67847

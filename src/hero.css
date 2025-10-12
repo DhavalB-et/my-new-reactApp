@@ -1,0 +1,13 @@
+.custom-swiper .swiper-pagination-bullet {
+  background: none !important;
+  width: auto !important;
+  height: auto !important;
+  margin: 0 6px !important;
+  opacity: 1 !important;
+}
+
+.custom-swiper .swiper-pagination-bullet img {
+  width: 20px;
+  height: 20px;
+  transition: all 0.3s ease;
+}

@@ -1,1 +1,21 @@
 @import "tailwindcss";
+
+:root {
+  --bg-color: #c1b1a2;
+  --text-color: #2d2926;
+  --white-color: #f2f2f2;
+}
+
+@layer components {
+  .custom-swiper .swiper-pagination-bullet {
+    @apply bg-transparent opacity-100 w-auto h-auto mx-1;
+  }
+
+  .custom-swiper .swiper-pagination-bullet svg circle {
+    @apply stroke-white transition-all duration-300;
+  }
+
+  .custom-swiper .swiper-pagination-bullet-active svg circle {
+    @apply stroke-blue-500 fill-blue-500;
+  }
+}
