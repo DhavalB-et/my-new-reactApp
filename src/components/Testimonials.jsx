@@ -40,7 +40,7 @@ export default function Testimonials() {
   return (
     <section className="bg-gray-50 py-16 relative">
       <div className="max-w-7xl mx-auto px-4">
-        <h2 className="text-3xl font-bold text-center mb-7">
+        <h2 className="text-3xl md:text-4xl font-bold text-[var(--text-color)] mb-4 text-center">
           What Our Clients Say
         </h2>
 
