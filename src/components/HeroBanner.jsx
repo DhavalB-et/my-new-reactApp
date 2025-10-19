@@ -3,6 +3,10 @@ import { Navigation, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import { useRef, useState } from "react";
+import "../hero.css";
+import engagementImg from "../assets/HP-images/engagement.jpg";
+import weddingImg from "../assets/HP-images/wedding.jpg";
+import prewedding from "../assets/HP-images/pre-wedding.jpg";
 
 const CustomPaginationIcon = ({ active = false }) => (
   <svg
@@ -30,21 +34,21 @@ export default function HeroCarousel() {
     {
       title: "Capturing your forever in timeless frames",
       desc: "Relive the magic of your wedding day through stunning, heartfelt photography. We turn emotions into everlasting memories.",
-      img: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1400&q=80",
+      img: weddingImg,
       btn_text: "Get Started",
       btn_link: "#",
     },
     {
       title: "Every love story deserves to be beautifully told",
       desc: "From the first glance to the lingering smile, our engagement shoots celebrate the beginning of your journey together.",
-      img: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1400&q=80",
+      img: engagementImg,
       btn_text: "Explore Now",
       btn_link: "#",
     },
     {
       title: "Where moments speak louder than poses",
       desc: "Our candid shots are filled with genuine laughter, pure emotions, and unforgettable moments that tell your true story.",
-      img: "https://images.unsplash.com/photo-1556761175-4b46a572b786?auto=format&fit=crop&w=1400&q=80",
+      img: prewedding,
       btn_text: "Get Started",
       btn_link: "#",
     },

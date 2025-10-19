@@ -8,6 +8,7 @@ import PortfolioSection from "./components/PortfolioSection";
 import WhatsAppButton from "./components/WhatsAppButton";
 import Footer from "./components/Footer";
 import HeroBanner from "./components/HeroBanner";
+import InstagramFeed from "./components/InstagramFeed";
 import AboutPage from "./pages/AboutPage"; // your new About page
 import "./hero.css";
 
@@ -42,6 +43,7 @@ function App() {
                 <PortfolioSection />
                 <ContactForm />
                 <Testimonials />
+                <InstagramFeed />
               </>
             }
           />
