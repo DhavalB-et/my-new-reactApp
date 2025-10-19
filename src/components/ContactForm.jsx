@@ -10,10 +10,10 @@ export default function ContactForm() {
 
     emailjs
       .sendForm(
-        "service_35y6oxa",
-        "template_9f5g52d",
+        "service_7l0154i",
+        "template_z6hdmqw",
         form.current,
-        "ZPtcz1IXNru4OpkDz"
+        "-cYJJqpIwHIRODq-U"
       )
       .then(
         () => {
@@ -78,15 +78,41 @@ export default function ContactForm() {
         </form>
 
         {/* Right: Studio Info */}
-        <div>
-          <h3 className="text-3xl md:text-4xl font-bold text-[var(--text-color)] mb-4">Let’s Work Together</h3>
-          <p className="text-gray-600 mb-6">
-            Have a shoot idea, event, or collaboration? Drop us a message — we’ll reply soon!
-          </p>
-          <p className="text-gray-800 font-semibold border-b py-3">📍 123 Studio Street, Ahmedabad</p>
-          <p className="text-gray-800 font-semibold border-b py-3">📞 +91 98765 43210</p>
-          <p className="text-gray-800 font-semibold border-b py-3">✉️ hello@studioweb.com</p>
-        </div>
+          <div>
+            <h3 className="text-3xl md:text-4xl font-bold text-[var(--text-color)] mb-4">
+              Let’s Work Together
+            </h3>
+            <p className="text-gray-600 mb-6">
+              Have a shoot idea, event, or collaboration? Drop us a message — we’ll reply soon!
+            </p>
+
+            {/* Address */}
+            <a
+              href="https://www.google.com/maps?q=Shop+no+A4,+Prant+office+same,+Lalpur"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-800 font-semibold border-b py-3 block hover:text-[var(--text-color)] transition"
+            >
+              📍 Shop no A4, Prant office same, Lalpur
+            </a>
+
+            {/* Phone */}
+            <a
+              href="tel:+916353611634"
+              className="text-gray-800 font-semibold border-b py-3 block hover:text-[var(--text-color)] transition"
+            >
+              📞 +91 63536 11634
+            </a>
+
+            {/* Email */}
+            <a
+              href="mailto:kanaiyafilms367@gmail.com"
+              className="text-gray-800 font-semibold border-b py-3 block hover:text-[var(--text-color)] transition"
+            >
+              ✉️ kanaiyafilms367@gmail.com
+            </a>
+          </div>
+
       </div>
     </section>
   );

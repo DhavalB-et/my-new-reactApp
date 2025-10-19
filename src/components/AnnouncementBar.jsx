@@ -10,7 +10,7 @@ export default function AnnouncementBar() {
   return (
     <div className="w-full bg-gradient-to-r bg-[#c1b1a2] text-[#2d2926] text-sm font-medium py-2 px-6 text-center flex justify-center items-center relative z-50 transition-all duration-500">
       <p>
-        🎉 Early Bird Offer: Free Teaser Video with Every Wedding Package!
+        🎉 Where Every Click Feels Like Forever.
       </p>
       <button
         className="absolute right-4 hover:text-[#f2f2f2] cursor-pointer transition"

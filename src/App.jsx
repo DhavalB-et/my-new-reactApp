@@ -5,6 +5,7 @@ import Testimonials from "./components/Testimonials";
 import Services from "./components/Services";
 import ContactForm from "./components/ContactForm";
 import PortfolioSection from "./components/PortfolioSection";
+import WhatsAppButton from "./components/WhatsAppButton";
 import Footer from "./components/Footer";
 import HeroBanner from "./components/HeroBanner";
 import AboutPage from "./pages/AboutPage"; // your new About page
@@ -36,6 +37,7 @@ function App() {
               <>
                 <HeroBanner />
                 <About />
+                <WhatsAppButton />
                 <Services />
                 <PortfolioSection />
                 <ContactForm />

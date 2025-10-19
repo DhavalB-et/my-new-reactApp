@@ -75,7 +75,7 @@ const Footer = () => {
               <FaFacebookF size={20} />
             </a>
             <a
-              href="https://instagram.com"
+              href="https://www.instagram.com/kanaiya_films_"
               target="_blank"
               rel="noreferrer"
               className="hover:text-[var(--link-hover-color)] transition"
@@ -91,7 +91,7 @@ const Footer = () => {
               <FaTwitter size={20} />
             </a>
             <a
-              href="https://youtube.com"
+              href="https://youtube.com/@kanaiyafilms367"
               target="_blank"
               rel="noreferrer"
               className="hover:text-[var(--link-hover-color)] transition"
@@ -106,7 +106,7 @@ const Footer = () => {
       </div>
 
       {/* Bottom Line */}
-      <div className="border-t border-gray-700 py-4 text-center text-sm text-[var(--text-color)] px-3">
+      <div className="border-t border-gray-700 py-2 text-center text-sm text-[var(--text-color)] px-3">
         © {new Date().getFullYear()} Kanaiya Films. All Rights Reserved. | Built by{" "}
         <a
           href="https://www.linkedin.com/in/dhaval-bhadarka/"
