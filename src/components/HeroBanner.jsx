@@ -2,11 +2,13 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import "../hero.css";
 import engagementImg from "../assets/HP-images/engagement.jpg";
+import engagementMobile from "../assets/HP-images/engagement1.jpg";
 import weddingImg from "../assets/HP-images/wedding.jpg";
-import prewedding from "../assets/HP-images/pre-wedding.jpg";
+import weddingMobile from "../assets/HP-images/wedding1.jpg";
+import prewedding from "../assets/HP-images/pre-wedding1.jpg";
 
 const CustomPaginationIcon = ({ active = false }) => (
   <svg
@@ -25,16 +27,24 @@ const CustomPaginationIcon = ({ active = false }) => (
   </svg>
 );
 
-
 export default function HeroCarousel() {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
   const swiperRef = useRef(null);
+
+  // ✅ Update isMobile when window resizes
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const slides = [
     {
       title: "Capturing your forever in timeless frames",
       desc: "Relive the magic of your wedding day through stunning, heartfelt photography. We turn emotions into everlasting memories.",
       img: weddingImg,
+      imgMobile: weddingMobile,
       btn_text: "Get Started",
       btn_link: "#",
     },
@@ -42,6 +52,7 @@ export default function HeroCarousel() {
       title: "Every love story deserves to be beautifully told",
       desc: "From the first glance to the lingering smile, our engagement shoots celebrate the beginning of your journey together.",
       img: engagementImg,
+      imgMobile: engagementMobile,
       btn_text: "Explore Now",
       btn_link: "#",
     },
@@ -69,10 +80,12 @@ export default function HeroCarousel() {
           <SwiperSlide key={i}>
             <div
               className="h-screen flex flex-col justify-end text-center text-white bg-cover bg-center relative"
-              style={{ backgroundImage: `url(${slide.img})` }}
+              style={{
+                backgroundImage: `url(${isMobile ? slide.imgMobile || slide.img : slide.img})`,
+              }}
             >
               {/* Bottom gradient overlay */}
-              <div className="absolute bottom-0 left-0 w-full h-[55%] bg-gradient-to-t from-black/100 to-transparent max-md:h-full" />
+              <div className="absolute bottom-0 left-0 w-full h-[55%] bg-gradient-to-t from-black/50 to-transparent max-md:h-full" />
 
               <div className="relative z-10 px-4 pb-16 max-w-4xl mx-auto">
                 <h1 className="text-4xl md:text-5xl font-extrabold mb-4 drop-shadow-lg">
@@ -92,7 +105,6 @@ export default function HeroCarousel() {
                     <span className="absolute left-0 aspect-square w-full origin-center translate-x-full rounded-full bg-[var(--bg-color)] transition-all duration-500 group-hover:-translate-x-0 group-hover:scale-150"></span>
                   </span>
                 </a>
-
               </div>
             </div>
           </SwiperSlide>
@@ -112,8 +124,6 @@ export default function HeroCarousel() {
           </button>
         ))}
       </div>
-
-      
     </section>
   );
 }
