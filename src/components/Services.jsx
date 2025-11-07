@@ -3,38 +3,46 @@ export default function ServicesSection() {
     {
       title: "Wedding Photography",
       desc: "Candid and timeless captures of your big day.",
+      link: "/wedding",
     },
     {
       title: "Engagement Shoots",
       desc: "Celebrate your love story with cinematic frames.",
+      link: "/engagement",
     },
     {
       title: "Pre-Wedding Films",
       desc: "Your love story, told through a cinematic lens.",
+      link: "/pre-wedding",
     },
     {
       title: "Event Coverage",
       desc: "From family gatherings to grand receptions, we cover it all.",
+      link: "/event-coverage",
     },
     {
       title: "Maternity Shoot",
       desc: "Beautiful portraits of motherhood and love.",
+      link: "/maternity",
     },
     {
       title: "Simant (Baby Shower)",
       desc: "Cherish the joy of welcoming your little one.",
+      link: "/simant",
     },
     {
       title: "Destination Photography",
       desc: "Stunning visuals from dream locations worldwide.",
+      link: "/destination",
     },
     {
       title: "DOP & Film Projects",
       desc: "Cinematic visuals for music videos and short films.",
+      link: "/dop-projects",
     },
   ];
 
- return (
+  return (
     <section className="py-20 px-6 bg-[#f2f8fc]">
       <div className="max-w-7xl mx-auto text-center">
         {/* Section Header */}
@@ -49,8 +57,9 @@ export default function ServicesSection() {
         {/* 4-column Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 text-left">
           {services.map((service, index) => (
-            <div
+            <a
               key={index}
+              href={service.link}
               className="relative bg-white rounded-2xl shadow-md p-6 flex flex-col gap-3 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl"
             >
               {/* Curved Accent Line (gradient effect) */}
@@ -72,7 +81,7 @@ export default function ServicesSection() {
                   </div>
                 </div>
               </div>
-            </div>
+            </a>
           ))}
         </div>
       </div>
