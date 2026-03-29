@@ -2,7 +2,8 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import "../hero.css";
 import engagementImg from "../assets/HP-images/engagement.jpg";
 import engagementMobile from "../assets/HP-images/engagement1.jpg";
@@ -29,15 +30,7 @@ const CustomPaginationIcon = ({ active = false }) => (
 
 export default function HeroCarousel() {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
   const swiperRef = useRef(null);
-
-  // ✅ Update isMobile when window resizes
-  useEffect(() => {
-    const handleResize = () => setIsMobile(window.innerWidth < 768);
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
 
   const slides = [
     {
@@ -78,33 +71,42 @@ export default function HeroCarousel() {
       >
         {slides.map((slide, i) => (
           <SwiperSlide key={i}>
-            <div
-              className="h-screen flex flex-col justify-end text-center text-white bg-cover bg-center relative"
-              style={{
-                backgroundImage: `url(${isMobile ? slide.imgMobile || slide.img : slide.img})`,
-              }}
-            >
-              {/* Bottom gradient overlay */}
-              <div className="absolute bottom-0 left-0 w-full h-[55%] bg-gradient-to-t from-black/50 to-transparent max-md:h-full" />
+            <div className="h-screen w-full relative flex flex-col justify-end text-center text-white overflow-hidden bg-black">
+              {/* Native responsive HTML5 picture element */}
+              <picture className="absolute inset-0 w-full h-full z-0">
+                {slide.imgMobile && (
+                  <source media="(max-width: 767px)" srcSet={slide.imgMobile} />
+                )}
+                <img
+                  src={slide.img}
+                  alt={slide.title}
+                  className="w-full h-full object-cover"
+                  fetchPriority={i === 0 ? "high" : "auto"}
+                  loading={i === 0 ? "eager" : "lazy"}
+                />
+              </picture>
 
-              <div className="relative z-10 px-4 pb-16 max-w-4xl mx-auto">
-                <h1 className="text-4xl md:text-5xl font-extrabold mb-4 drop-shadow-lg">
+              {/* Bottom gradient overlay */}
+              <div className="absolute bottom-0 left-0 w-full h-[60%] bg-gradient-to-t from-black/80 via-black/30 to-transparent z-10 max-md:h-[75%]" />
+
+              <div className="relative z-20 px-4 pb-20 max-w-4xl mx-auto">
+                <h1 className="text-4xl md:text-5xl font-extrabold mb-4 drop-shadow-md text-[var(--white-color)]">
                   {slide.title}
                 </h1>
-                <p className="text-lg md:text-xl mb-6 max-w-xl mx-auto drop-shadow">
+                <p className="text-lg md:text-xl mb-6 max-w-xl mx-auto drop-shadow text-gray-200">
                   {slide.desc}
                 </p>
-                <a
-                  href={slide.btn_link}
-                  className="group relative z-0 h-12 overflow-hidden rounded-[5px] bg-[var(--text-color)] px-10 py-3 text-[16px] text-[var(--white-color)] shadow-sm hover:shadow-md transition-all duration-300"
+                <Link
+                  to="/contact"
+                  className="group relative inline-block z-10 h-12 overflow-hidden rounded-[5px] bg-[var(--text-color)] px-10 py-3 text-[16px] text-[var(--white-color)] shadow-sm hover:shadow-lg transition-all duration-300"
                 >
                   <span className="relative z-10 transition-colors duration-300 group-hover:text-[var(--text-color)]">
-                    {slide.btn_text}
+                    Book a Shoot
                   </span>
                   <span className="absolute inset-0 overflow-hidden rounded-[5px]">
                     <span className="absolute left-0 aspect-square w-full origin-center translate-x-full rounded-full bg-[var(--bg-color)] transition-all duration-500 group-hover:-translate-x-0 group-hover:scale-150"></span>
                   </span>
-                </a>
+                </Link>
               </div>
             </div>
           </SwiperSlide>

@@ -1,4 +1,5 @@
 import { FaFacebookF, FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
+import { Link } from "react-router-dom";
 import logoDark from "../assets/logo-dark.svg";
 
 const Footer = () => {
@@ -40,24 +41,24 @@ const Footer = () => {
           <h3 className="text-lg font-semibold mb-3">Quick Links</h3>
           <ul className="space-y-2 text-[var(--text-color)]">
             <li>
-              <a href="#about" className="hover:text-[var(--link-hover-color)] transition">
-                About
-              </a>
+              <Link to="/about" className="hover:text-[var(--link-hover-color)] transition">
+                Our Story
+              </Link>
             </li>
             <li>
-              <a href="#services" className="hover:text-[var(--link-hover-color)] transition">
-                Services
-              </a>
-            </li>
-            <li>
-              <a href="#portfolio" className="hover:text-[var(--link-hover-color)] transition">
+              <Link to="/projects" className="hover:text-[var(--link-hover-color)] transition">
                 Portfolio
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#contact" className="hover:text-[var(--link-hover-color)] transition">
-                Contact
-              </a>
+              <Link to="/contact" className="hover:text-[var(--link-hover-color)] transition">
+                Book a Shoot
+              </Link>
+            </li>
+            <li>
+              <Link to="/#testimonials" className="hover:text-[var(--link-hover-color)] transition">
+                Kind Words
+              </Link>
             </li>
           </ul>
         </div>
@@ -65,38 +66,38 @@ const Footer = () => {
         {/* Socials */}
         <div>
           <h3 className="text-lg font-semibold mb-3">Follow Us</h3>
-          <div className="flex justify-start md:justify-start gap-5 mb-4">
+          <div className="flex justify-start md:justify-start gap-4 mb-4">
             <a
               href="https://facebook.com"
               target="_blank"
               rel="noreferrer"
-              className="hover:text-[var(--link-hover-color)] transition"
+              className="bg-[var(--text-color)] text-[var(--white-color)] p-3 rounded-full hover:bg-[var(--link-hover-color)] hover:-translate-y-1 transition-all duration-300"
             >
-              <FaFacebookF size={20} />
+              <FaFacebookF size={18} />
             </a>
             <a
               href="https://www.instagram.com/kanaiya_films_"
               target="_blank"
               rel="noreferrer"
-              className="hover:text-[var(--link-hover-color)] transition"
+              className="bg-[var(--text-color)] text-[var(--white-color)] p-3 rounded-full hover:bg-[var(--link-hover-color)] hover:-translate-y-1 transition-all duration-300"
             >
-              <FaInstagram size={20} />
+              <FaInstagram size={18} />
             </a>
             <a
               href="https://twitter.com"
               target="_blank"
               rel="noreferrer"
-              className="hover:text-[var(--link-hover-color)] transition"
+              className="bg-[var(--text-color)] text-[var(--white-color)] p-3 rounded-full hover:bg-[var(--link-hover-color)] hover:-translate-y-1 transition-all duration-300"
             >
-              <FaTwitter size={20} />
+              <FaTwitter size={18} />
             </a>
             <a
               href="https://youtube.com/@kanaiyafilms367"
               target="_blank"
               rel="noreferrer"
-              className="hover:text-[var(--link-hover-color)] transition"
+              className="bg-[var(--text-color)] text-[var(--white-color)] p-3 rounded-full hover:bg-[var(--link-hover-color)] hover:-translate-y-1 transition-all duration-300"
             >
-              <FaYoutube size={20} />
+              <FaYoutube size={18} />
             </a>
           </div>
           <p className="text-sm text-[var(--text-color)]">

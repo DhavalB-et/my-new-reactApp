@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import About from "./components/About";
@@ -20,6 +21,11 @@ import ServicePage from "./pages/ServicePage";
 function PageWrapper({ children }) {
   const location = useLocation();
   const isHome = location.pathname === "/";
+
+  // Automatically scroll to top when changing pages
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
 
   return (
     <main className={`${isHome ? "pt-0" : "pt-[100px]"} transition-all duration-300`}>
