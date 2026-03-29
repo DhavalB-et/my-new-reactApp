@@ -1,12 +1,14 @@
 // src/components/ContactForm.jsx
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
 
 export default function ContactForm() {
   const form = useRef();
+  const [status, setStatus] = useState("idle");
 
   const sendEmail = (e) => {
     e.preventDefault();
+    setStatus("submitting");
 
     emailjs
       .sendForm(
@@ -17,12 +19,14 @@ export default function ContactForm() {
       )
       .then(
         () => {
-          alert("Message sent successfully!");
+          setStatus("success");
           e.target.reset();
+          setTimeout(() => setStatus("idle"), 5000);
         },
         (error) => {
           console.log(error.text);
-          alert("Oops! Something went wrong, please try again.");
+          setStatus("error");
+          setTimeout(() => setStatus("idle"), 5000);
         }
       );
   };
@@ -64,16 +68,34 @@ export default function ContactForm() {
             className="w-full mb-4 p-3 border rounded-lg"
           ></textarea>
 
+          {status === "success" && (
+            <div className="mb-4 p-4 rounded-lg bg-green-50 text-green-700 font-medium border border-green-200 transition-all">
+              Message sent successfully! We'll get back to you soon.
+            </div>
+          )}
+          {status === "error" && (
+            <div className="mb-4 p-4 rounded-lg bg-red-50 text-red-700 font-medium border border-red-200 transition-all">
+              Oops! Something went wrong. Please try again.
+            </div>
+          )}
+
           <button
             type="submit"
-            className="group relative z-0 h-12 overflow-hidden rounded-[5px] bg-[var(--text-color)] px-10 py-3 text-[16px] text-[var(--white-color)] shadow-sm hover:shadow-md transition-all duration-300"
+            disabled={status === "submitting"}
+            className={`group relative z-0 h-12 overflow-hidden rounded-[5px] px-10 py-3 text-[16px] text-[var(--white-color)] shadow-sm transition-all duration-300 ${
+              status === "submitting" 
+                ? "bg-gray-400 cursor-not-allowed" 
+                : "bg-[var(--text-color)] hover:shadow-md"
+            }`}
           >
             <span className="relative z-10 transition-colors duration-300 group-hover:text-[var(--text-color)]">
-              Send Message
+              {status === "submitting" ? "Sending..." : "Send Message"}
             </span>
-            <span className="absolute inset-0 overflow-hidden rounded-[5px]">
-              <span className="absolute left-0 aspect-square w-full origin-center translate-x-full rounded-full bg-[var(--bg-color)] transition-all duration-500 group-hover:-translate-x-0 group-hover:scale-150"></span>
-            </span>
+            {status !== "submitting" && (
+              <span className="absolute inset-0 overflow-hidden rounded-[5px]">
+                <span className="absolute left-0 aspect-square w-full origin-center translate-x-full rounded-full bg-[var(--bg-color)] transition-all duration-500 group-hover:-translate-x-0 group-hover:scale-150"></span>
+              </span>
+            )}
           </button>
         </form>
 

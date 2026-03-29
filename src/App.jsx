@@ -10,16 +10,11 @@ import Footer from "./components/Footer";
 import HeroBanner from "./components/HeroBanner";
 import InstagramFeed from "./components/InstagramFeed";
 import AboutPage from "./pages/AboutPage"; // your new About page
+import ProjectsPage from "./pages/ProjectsPage";
+import ContactPage from "./pages/ContactPage";
 import "./hero.css";
 
-import Wedding from "./pages/services/Wedding";
-import Engagement from "./pages/services/Engagement";
-import PreWedding from "./pages/services/PreWedding";
-import EventCoverage from "./pages/services/EventCoverage";
-import Maternity from "./pages/services/Maternity";
-import BabyShoot from "./pages/services/BabyShoot";
-import Destination from "./pages/services/Destination";
-import DopProjects from "./pages/services/DopProjects";
+import ServicePage from "./pages/ServicePage";
 
 // Wrapper component to handle route-based padding
 function PageWrapper({ children }) {
@@ -59,14 +54,10 @@ function App() {
 
           {/* About page route */}
           <Route path="/about" element={<AboutPage />} />
-          <Route path="/wedding" element={<Wedding />} />
-          <Route path="/engagement" element={<Engagement />} />
-          <Route path="/pre-wedding" element={<PreWedding />} />
-          <Route path="/event-coverage" element={<EventCoverage />} />
-          <Route path="/maternity" element={<Maternity />} />
-          <Route path="/baby-shoot" element={<BabyShoot />} />
-          <Route path="/destination" element={<Destination />} />
-          <Route path="/dop-projects" element={<DopProjects />} />
+          <Route path="/projects" element={<ProjectsPage />} />
+          <Route path="/contact" element={<ContactPage />} />
+          <Route path="/services/:slug" element={<ServicePage />} />
+
         </Routes>
       </PageWrapper>
 

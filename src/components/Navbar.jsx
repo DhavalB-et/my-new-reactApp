@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
-import { useLocation } from "react-router-dom"; // <-- Add this if using React Router
+import { useLocation, Link } from "react-router-dom";
 import logoLight from "../assets/logo-light.svg";
 import logoDark from "../assets/logo-dark.svg";
 import AnnouncementBar from "./AnnouncementBar";
@@ -23,6 +23,12 @@ export default function Navbar() {
 
   // 🔹 Determine navbar style
   const shouldBeTransparent = isHome && !isSticky;
+
+  const NAV_LINKS = [
+    { name: "Portfolio", path: "/projects", isHash: false },
+    { name: "Our Story", path: "/about", isHash: false },
+    { name: "Testimonials", path: "/#testimonials", isHash: true }
+  ];
 
   return (
     <header className="fixed w-full z-50 transition-all duration-500">
@@ -59,26 +65,42 @@ export default function Navbar() {
                 : "text-[var(--text-color)]"
             }`}
           >
-            {["Projects", "About", "Testimonials", "Contact"].map((item) => (
-              <li key={item}>
-                <a
-                  href={`#${item.toLowerCase()}`}
-                  className="relative group transition-colors"
-                >
-                  {item}
-                  <span
-                    className={`absolute left-0 bottom-[-4px] w-0 h-[2px] ${
-                      shouldBeTransparent
-                        ? "bg-[var(--white-color)]"
-                        : "bg-[var(--text-color)]"
-                    } group-hover:w-full transition-all duration-300`}
-                  ></span>
-                </a>
+            {NAV_LINKS.map((link) => (
+              <li key={link.name}>
+                {!link.isHash ? (
+                  <Link
+                    to={link.path}
+                    className="relative group transition-colors"
+                  >
+                    {link.name}
+                    <span
+                      className={`absolute left-0 bottom-[-4px] w-0 h-[2px] ${
+                        shouldBeTransparent
+                          ? "bg-[var(--white-color)]"
+                          : "bg-[var(--text-color)]"
+                      } group-hover:w-full transition-all duration-300`}
+                    ></span>
+                  </Link>
+                ) : (
+                  <a
+                    href={link.path}
+                    className="relative group transition-colors"
+                  >
+                    {link.name}
+                    <span
+                      className={`absolute left-0 bottom-[-4px] w-0 h-[2px] ${
+                        shouldBeTransparent
+                          ? "bg-[var(--white-color)]"
+                          : "bg-[var(--text-color)]"
+                      } group-hover:w-full transition-all duration-300`}
+                    ></span>
+                  </a>
+                )}
               </li>
             ))}
             <li>
-              <a
-                href="#get-started"
+              <Link
+                to="/contact"
                 className={`group relative z-0 h-12 overflow-hidden rounded-[5px] px-6 py-3 text-[16px] text-[var(--white-color)] shadow-sm hover:shadow-md transition-all duration-300 ${
                   shouldBeTransparent
                     ? "bg-[var(--text-color)]"
@@ -86,12 +108,12 @@ export default function Navbar() {
                 }`}
               >
                 <span className="relative z-10 transition-colors duration-300 group-hover:text-[var(--text-color)]">
-                  Get Started
+                  Book a Shoot
                 </span>
                 <span className="absolute inset-0 overflow-hidden rounded-[5px]">
                   <span className="absolute left-0 aspect-square w-full origin-center translate-x-full rounded-full bg-[var(--bg-color)] transition-all duration-500 group-hover:-translate-x-0 group-hover:scale-150"></span>
                 </span>
-              </a>
+              </Link>
             </li>
           </ul>
 
@@ -126,20 +148,30 @@ export default function Navbar() {
                 : "text-[var(--text-color)] bg-[var(--text-white)]"
             }`}
           >
-            {["Projects", "About", "Testimonials", "Contact"].map((item) => (
-              <li key={item}>
-                <a
-                  href={`#${item.toLowerCase()}`}
-                  className="block hover:text-[var(--text-color)] transition-colors"
-                  onClick={() => setIsOpen(false)}
-                >
-                  {item}
-                </a>
+            {NAV_LINKS.map((link) => (
+              <li key={link.name}>
+                {!link.isHash ? (
+                  <Link
+                    to={link.path}
+                    className="block hover:text-[var(--text-color)] transition-colors"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    {link.name}
+                  </Link>
+                ) : (
+                  <a
+                    href={link.path}
+                    className="block hover:text-[var(--text-color)] transition-colors"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    {link.name}
+                  </a>
+                )}
               </li>
             ))}
             <li>
-              <a
-                href="#get-started"
+              <Link
+                to="/contact"
                 className={`block text-center py-2 rounded-full transition ${
                   shouldBeTransparent
                     ? "bg-[var(--text-color)] text-[var(--white-color)] hover:bg-[var(--bg-color)] hover:text-[var(--text-color)]"
@@ -147,8 +179,8 @@ export default function Navbar() {
                 }`}
                 onClick={() => setIsOpen(false)}
               >
-                Get Started
-              </a>
+                Book a Shoot
+              </Link>
             </li>
           </ul>
         </div>

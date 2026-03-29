@@ -1,44 +1,45 @@
+import { Link } from "react-router-dom";
 export default function ServicesSection() {
   const services = [
     {
       title: "Wedding Photography",
       desc: "Candid and timeless captures of your big day.",
-      link: "/wedding",
+      link: "/services/wedding",
     },
     {
       title: "Engagement Shoots",
       desc: "Celebrate your love story with cinematic frames.",
-      link: "/engagement",
+      link: "/services/engagement",
     },
     {
       title: "Pre-Wedding Films",
       desc: "Your love story, told through a cinematic lens.",
-      link: "/pre-wedding",
+      link: "/services/pre-wedding",
     },
     {
       title: "Event Coverage",
       desc: "From family gatherings to grand receptions, we cover it all.",
-      link: "/event-coverage",
+      link: "/services/event-coverage",
     },
     {
       title: "Maternity Shoot",
       desc: "Beautiful portraits of motherhood and love.",
-      link: "/maternity",
+      link: "/services/maternity",
     },
     {
       title: "Simant (Baby Shower)",
       desc: "Cherish the joy of welcoming your little one.",
-      link: "/simant",
+      link: "/services/simant",
     },
     {
       title: "Destination Photography",
       desc: "Stunning visuals from dream locations worldwide.",
-      link: "/destination",
+      link: "/services/destination",
     },
     {
       title: "DOP & Film Projects",
       desc: "Cinematic visuals for music videos and short films.",
-      link: "/dop-projects",
+      link: "/services/dop-projects",
     },
   ];
 
@@ -57,11 +58,11 @@ export default function ServicesSection() {
         {/* 4-column Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 text-left">
           {services.map((service, index) => (
-            <a
-              key={index}
-              href={service.link}
+            <Link
+              to={service.link}
               className="relative bg-white rounded-2xl shadow-md p-6 flex flex-col gap-3 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl"
             >
+
               {/* Curved Accent Line (gradient effect) */}
               <div className="absolute inset-0 rounded-2xl">
                 <div className="absolute left-0 top-0 h-full w-[6px] rounded-l-2xl bg-[var(--text-color)] transition-colors duration-300 group-hover:bg-[var(--bg-color)]"></div>
@@ -81,7 +82,7 @@ export default function ServicesSection() {
                   </div>
                 </div>
               </div>
-            </a>
+            </Link>
           ))}
         </div>
       </div>
