@@ -5,6 +5,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/autoplay";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useScrollReveal } from "../utils/useScrollReveal";
 
 const testimonials = [
   {
@@ -37,13 +38,15 @@ const testimonials = [
 ];
 
 export default function Testimonials() {
+  const ref = useScrollReveal();
   return (
-    <section className="bg-gray-50 py-16 relative" id="testimonials">
+    <section ref={ref} className="bg-gray-50 py-16 relative" id="testimonials">
       <div className="max-w-7xl mx-auto px-4">
-        <h2 className="text-3xl md:text-4xl font-bold text-[var(--text-color)] mb-4 text-center">
+        <h2 className="reveal text-3xl md:text-4xl font-bold text-[var(--text-color)] mb-4 text-center">
           What Our Clients Say
         </h2>
 
+        <div className="reveal" style={{ "--reveal-delay": "150ms" }}>
         <Swiper
           modules={[Autoplay, Navigation]}
           autoplay={{ delay: 5000 }}
@@ -88,9 +91,10 @@ export default function Testimonials() {
             </SwiperSlide>
           ))}
         </Swiper>
+        </div>
 
         {/* Arrows below the slider */}
-        <div className="flex justify-center items-center gap-6 mt-6">
+        <div className="reveal flex justify-center items-center gap-6 mt-6" style={{ "--reveal-delay": "250ms" }}>
           <div className="swiper-button-prev-custom cursor-pointer p-2 bg-[var(--bg-color)] rounded-full shadow hover:bg-[var(--white-color)] hover:border-black-1">
             <ChevronLeft className="w-5 h-5 text-[var(--text-color)]" />
           </div>

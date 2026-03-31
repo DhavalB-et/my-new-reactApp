@@ -10,21 +10,86 @@
 html {
   scroll-behavior: smooth;
 }
+
+/* ─── Scroll Reveal Animations ─────────────────────────────────────── */
+
+/* Default: fade + slide up */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition:
+    opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+  will-change: opacity, transform;
+}
+
+/* Variant: fade from left */
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-50px);
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+  will-change: opacity, transform;
+}
+
+/* Variant: fade from right */
+.reveal-right {
+  opacity: 0;
+  transform: translateX(50px);
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+  will-change: opacity, transform;
+}
+
+/* Variant: pure fade */
+.reveal-fade {
+  opacity: 0;
+  transition: opacity 0.8s ease;
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+/* Variant: scale up */
+.reveal-scale {
+  opacity: 0;
+  transform: scale(0.88);
+  transition:
+    opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+  will-change: opacity, transform;
+}
+
+/* Activated state — applied by IntersectionObserver */
+.reveal-visible {
+  opacity: 1 !important;
+  transform: translate(0, 0) scale(1) !important;
+}
 @keyframes bounce-in {
   0% { transform: scale(0); opacity: 0; }
   60% { transform: scale(1.2); opacity: 1; }
   100% { transform: scale(1); }
 }
-@layer components {
-  .custom-swiper .swiper-pagination-bullet {
-    @apply bg-transparent opacity-100 w-auto h-auto mx-1;
-  }
-
-  .custom-swiper .swiper-pagination-bullet svg circle {
-    @apply stroke-white transition-all duration-300;
-  }
-
-  .custom-swiper .swiper-pagination-bullet-active svg circle {
-    @apply stroke-blue-500 fill-blue-500;
-  }
+/* Swiper pagination overrides */
+.custom-swiper .swiper-pagination-bullet {
+  background: transparent;
+  opacity: 1;
+  width: auto;
+  height: auto;
+  margin: 0 4px;
 }
+
+.custom-swiper .swiper-pagination-bullet svg circle {
+  stroke: white;
+  transition: all 0.3s;
+}
+
+.custom-swiper .swiper-pagination-bullet-active svg circle {
+  stroke: #3b82f6;
+  fill: #3b82f6;
+}
+

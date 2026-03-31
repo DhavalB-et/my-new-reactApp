@@ -2,7 +2,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "../hero.css";
 import engagementImg from "../assets/HP-images/engagement.jpg";
@@ -10,6 +10,19 @@ import engagementMobile from "../assets/HP-images/engagement1.jpg";
 import weddingImg from "../assets/HP-images/wedding.jpg";
 import weddingMobile from "../assets/HP-images/wedding1.jpg";
 import prewedding from "../assets/HP-images/pre-wedding1.jpg";
+
+// Pre-load ALL hero images immediately so the browser never lazy-evicts them
+const heroImageCache = [];
+function preloadImages(slides) {
+  slides.forEach((slide) => {
+    [slide.img, slide.imgMobile].forEach((src) => {
+      if (!src) return;
+      const img = new Image();
+      img.src = src;
+      heroImageCache.push(img); // hold reference so GC doesn't discard
+    });
+  });
+}
 
 const CustomPaginationIcon = ({ active = false }) => (
   <svg
@@ -58,6 +71,19 @@ export default function HeroCarousel() {
     },
   ];
 
+  // Track which images have fully decoded — drives the fade-in
+  const [loadedMap, setLoadedMap] = useState(() => ({}));
+
+  const handleImageLoad = (index) => {
+    setLoadedMap((prev) => ({ ...prev, [index]: true }));
+  };
+
+  // Kick off eager preload for every slide on mount
+  useEffect(() => {
+    preloadImages(slides);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <section className="relative w-full h-screen">
       <Swiper
@@ -72,6 +98,11 @@ export default function HeroCarousel() {
         {slides.map((slide, i) => (
           <SwiperSlide key={i}>
             <div className="h-screen w-full relative flex flex-col justify-end text-center text-white overflow-hidden bg-black">
+              {/* Placeholder shown until image decodes */}
+              {!loadedMap[i] && (
+                <div className="absolute inset-0 z-0 hero-placeholder" />
+              )}
+
               {/* Native responsive HTML5 picture element */}
               <picture className="absolute inset-0 w-full h-full z-0">
                 {slide.imgMobile && (
@@ -80,9 +111,16 @@ export default function HeroCarousel() {
                 <img
                   src={slide.img}
                   alt={slide.title}
-                  className="w-full h-full object-cover"
-                  fetchPriority={i === 0 ? "high" : "auto"}
-                  loading={i === 0 ? "eager" : "lazy"}
+                  className="w-full h-full object-cover hero-slide-img"
+                  fetchPriority={i === 0 ? "high" : "low"}
+                  loading="eager"
+                  decoding="async"
+                  onLoad={() => handleImageLoad(i)}
+                  style={{
+                    opacity: loadedMap[i] ? 1 : 0,
+                    transition: "opacity 0.5s ease",
+                    willChange: "transform",
+                  }}
                 />
               </picture>
 

@@ -109,14 +109,14 @@ const Footer = () => {
       {/* Bottom Line */}
       <div className="border-t border-gray-700 py-2 text-center text-sm text-[var(--text-color)] px-3">
         © {new Date().getFullYear()} Kanaiya Films. All Rights Reserved. | Built by{" "}
-        <a
-          href="https://www.linkedin.com/in/dhaval-bhadarka/"
-          target="_blank"
-          rel="noreferrer"
-          className="text-[var(--link-hover-color)] hover:underline"
-        >
+      <a
+        href="https://wa.me/916352966958?text=Hey%20there!%20I%27m%20interested%20in%20your%20web%20development%20services."
+        target="_blank"
+        rel="noreferrer"
+        className="text-[var(--link-hover-color)] hover:underline"
+      >
           Dhaval Bhadarka
-        </a>
+      </a>
       </div>
     </footer>
   );

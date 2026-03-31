@@ -6,25 +6,25 @@ import Testimonials from "./components/Testimonials";
 import Services from "./components/Services";
 import ContactForm from "./components/ContactForm";
 import PortfolioSection from "./components/PortfolioSection";
+import VideoSection from "./components/VideoSection";
 import WhatsAppButton from "./components/WhatsAppButton";
 import Footer from "./components/Footer";
 import HeroBanner from "./components/HeroBanner";
 import InstagramFeed from "./components/InstagramFeed";
-import AboutPage from "./pages/AboutPage"; // your new About page
+import AboutPage from "./pages/AboutPage";
 import ProjectsPage from "./pages/ProjectsPage";
 import ContactPage from "./pages/ContactPage";
 import "./hero.css";
-
 import ServicePage from "./pages/ServicePage";
+import { useSmoothScroll, scrollToTop } from "./utils/useSmoothScroll";
 
-// Wrapper component to handle route-based padding
+// Scroll-to-top on route change using Lenis-aware helper
 function PageWrapper({ children }) {
   const location = useLocation();
   const isHome = location.pathname === "/";
 
-  // Automatically scroll to top when changing pages
   useEffect(() => {
-    window.scrollTo(0, 0);
+    scrollToTop();
   }, [location.pathname]);
 
   return (
@@ -34,14 +34,15 @@ function PageWrapper({ children }) {
   );
 }
 
-function App() {
-  return (
-    <Router>
-      <Navbar />
+// Root app — Lenis is initialized here so it covers all pages
+function AppInner() {
+  useSmoothScroll();
 
+  return (
+    <>
+      <Navbar />
       <PageWrapper>
         <Routes>
-          {/* Homepage route */}
           <Route
             path="/"
             element={
@@ -51,23 +52,28 @@ function App() {
                 <WhatsAppButton />
                 <Services />
                 <PortfolioSection />
+                {/* <VideoSection /> */}
                 <ContactForm />
                 <Testimonials />
                 <InstagramFeed />
               </>
             }
           />
-
-          {/* About page route */}
           <Route path="/about" element={<AboutPage />} />
           <Route path="/projects" element={<ProjectsPage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/services/:slug" element={<ServicePage />} />
-
         </Routes>
       </PageWrapper>
-
       <Footer />
+    </>
+  );
+}
+
+function App() {
+  return (
+    <Router>
+      <AppInner />
     </Router>
   );
 }

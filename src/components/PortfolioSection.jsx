@@ -2,6 +2,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/autoplay";
+import { useScrollReveal } from "../utils/useScrollReveal";
 
 import weddingImg from "../assets/wedding.jpg";
 import fashionImg from "../assets/fashion.jpg";
@@ -10,6 +11,8 @@ import maternityImg from "../assets/maternity.jpg";
 import garmentImg from "../assets/garment.jpg";
 
 const PortfolioSection = () => {
+  const ref = useScrollReveal();
+
   const photos = [
     { src: weddingImg, title: "Wedding Photography" },
     { src: fashionImg, title: "Fashion Photography" },
@@ -19,17 +22,17 @@ const PortfolioSection = () => {
   ];
 
   return (
-    <section className="py-16 px-6 md:px-16">
+    <section ref={ref} className="py-16 px-6 md:px-16">
       <div className="grid md:grid-cols-2 gap-10 items-center">
-        {/* LEFT SIDE */}
-        <div>
+        {/* LEFT SIDE — slides in from the left */}
+        <div className="reveal-left">
           <h2 className="text-3xl md:text-4xl font-bold text-[var(--text-color)] mb-4">
             Capturing Emotions, Not Just Photos
           </h2>
           <p className="text-gray-600 leading-relaxed mb-8">
-                Every picture tells a story — your story. From weddings to maternity,
-                from intimate portraits to grand events, we focus on capturing real
-                emotions that last a lifetime. Let’s make your memories timeless.
+            Every picture tells a story — your story. From weddings to maternity,
+            from intimate portraits to grand events, we focus on capturing real
+            emotions that last a lifetime. Let's make your memories timeless.
           </p>
 
           {/* SKILL BARS */}
@@ -40,8 +43,8 @@ const PortfolioSection = () => {
           </div>
         </div>
 
-        {/* RIGHT SIDE - SLIDER */}
-        <div className="rounded-2xl overflow-hidden shadow-md">
+        {/* RIGHT SIDE — slides in from the right */}
+        <div className="reveal-right rounded-2xl overflow-hidden shadow-md" style={{ "--reveal-delay": "100ms" }}>
           <Swiper
             modules={[Autoplay]}
             autoplay={{ delay: 2500, disableOnInteraction: false }}
@@ -83,7 +86,7 @@ const SkillBar = ({ label, percent }) => (
       <div
         className="bg-[var(--bg-color)] h-2.5 rounded-full"
         style={{ width: `${percent}%` }}
-      ></div>
+      />
     </div>
   </div>
 );

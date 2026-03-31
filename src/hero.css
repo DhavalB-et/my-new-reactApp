@@ -11,3 +11,23 @@
   height: 20px;
   transition: all 0.3s ease;
 }
+
+/* Dark placeholder shown while hero image decodes — prevents white flash */
+.hero-placeholder {
+  background: linear-gradient(135deg, #111 0%, #1a1a1a 50%, #111 100%);
+  background-size: 200% 200%;
+  animation: heroShimmer 1.8s ease-in-out infinite;
+}
+
+@keyframes heroShimmer {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Keep hero images on the GPU compositor so browser never evicts/repaints on scroll */
+.hero-slide-img {
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
