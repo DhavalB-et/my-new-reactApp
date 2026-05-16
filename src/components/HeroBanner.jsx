@@ -4,6 +4,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import { useRef, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import Button from "./Button";
 import "../hero.css";
 import engagementImg from "../assets/HP-images/engagement.jpg";
 import engagementMobile from "../assets/HP-images/engagement1.jpg";
@@ -127,24 +128,14 @@ export default function HeroCarousel() {
               {/* Bottom gradient overlay */}
               <div className="absolute bottom-0 left-0 w-full h-[60%] bg-gradient-to-t from-black/80 via-black/30 to-transparent z-10 max-md:h-[75%]" />
 
-              <div className="relative z-20 px-4 pb-20 max-w-4xl mx-auto">
-                <h1 className="text-4xl md:text-5xl font-extrabold mb-4 drop-shadow-md text-[var(--white-color)]">
+              <div className="relative z-20 px-6 pb-20 max-w-7xl w-full mx-auto text-left">
+                <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold mb-6 drop-shadow-md text-[var(--white-color)] tracking-tight max-w-4xl">
                   {slide.title}
                 </h1>
-                <p className="text-lg md:text-xl mb-6 max-w-xl mx-auto drop-shadow text-gray-200">
+                <p className="text-xl md:text-2xl mb-10 max-w-2xl drop-shadow-lg text-gray-200 leading-relaxed font-light">
                   {slide.desc}
                 </p>
-                <Link
-                  to="/contact"
-                  className="group relative inline-block z-10 h-12 overflow-hidden rounded-[5px] bg-[var(--text-color)] px-10 py-3 text-[16px] text-[var(--white-color)] shadow-sm hover:shadow-lg transition-all duration-300"
-                >
-                  <span className="relative z-10 transition-colors duration-300 group-hover:text-[var(--text-color)]">
-                    Book a Shoot
-                  </span>
-                  <span className="absolute inset-0 overflow-hidden rounded-[5px]">
-                    <span className="absolute left-0 aspect-square w-full origin-center translate-x-full rounded-full bg-[var(--bg-color)] transition-all duration-500 group-hover:-translate-x-0 group-hover:scale-150"></span>
-                  </span>
-                </Link>
+                <Button link="/contact" text="Book a Shoot" />
               </div>
             </div>
           </SwiperSlide>

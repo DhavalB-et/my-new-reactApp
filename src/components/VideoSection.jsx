@@ -12,20 +12,21 @@ const VideoSection = () => {
   ];
 
   return (
-    <section ref={ref} className="py-24 px-6 md:px-16 max-w-[1400px] mx-auto bg-gray-50/50">
-      
-      {/* Header */}
-      <div className="reveal-fade mb-12 text-center" style={{ "--reveal-delay": "0ms" }}>
-        <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[var(--text-color)] tracking-tight mb-4">
-          Cinematic Highlights
-        </h2>
-        <p className="max-w-2xl mx-auto text-gray-500 text-lg md:text-xl leading-relaxed">
-          Relive the most beautiful moments. Press play to experience the magic of our wedding highlight films.
-        </p>
+    <section ref={ref} className="py-20 md:py-24 px-6 bg-gray-50/50">
+      <div className="max-w-7xl mx-auto text-center">
+        <div className="mb-12">
+          <h2 className="text-4xl md:text-5xl font-bold text-[var(--text-color)] mb-6">
+            Cinematic Highlights
+          </h2>
+          <p className="max-w-3xl mx-auto text-lg md:text-xl text-gray-600 leading-relaxed">
+            Relive the magic of our most cherished moments through cinematic storytelling. 
+            Every frame is crafted with emotion, elegance, and pure passion.
+          </p>
+        </div>
       </div>
 
       {/* Videos Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10 max-w-7xl mx-auto">
         {videoIds.map((videoId, index) => (
           <div 
             key={index}

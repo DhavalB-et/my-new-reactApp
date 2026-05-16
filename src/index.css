@@ -93,3 +93,10 @@ html {
   fill: #3b82f6;
 }
 
+/* Custom Testimonial Swiper Pagination */
+.swiper-pagination-custom .swiper-pagination-bullet-active {
+  background-color: var(--bg-color) !important;
+  opacity: 1 !important;
+  transform: scale(1.2);
+}
+

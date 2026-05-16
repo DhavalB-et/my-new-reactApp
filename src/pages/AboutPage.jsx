@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import Button from "../components/Button";
 
 export default function AboutPage() {
   const CLOUD_NAME = import.meta.env.VITE_CLOUDINARY_CLOUD_NAME;
@@ -27,7 +28,7 @@ export default function AboutPage() {
   };
 
   return (
-    <div className="bg-[#fcfbf9] min-h-screen pt-[120px] pb-24 overflow-hidden">
+    <div className="bg-[#fcfbf9] min-h-screen pt-32 pb-20 md:pb-24 overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
         
         {/* Left Side: Animated Image */}
@@ -57,12 +58,12 @@ export default function AboutPage() {
         >
           <motion.h1 
             variants={childVariants}
-            className="text-4xl md:text-5xl font-extrabold text-[var(--text-color)] mb-8 leading-tight tracking-tight"
+            className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-[var(--text-color)] mb-6"
           >
             My Journey <br className="hidden md:block"/> Through the Lens
           </motion.h1>
 
-          <div className="space-y-6 text-lg text-gray-600 leading-relaxed font-light">
+          <div className="space-y-6 text-lg md:text-xl text-gray-600 leading-relaxed font-light">
             <motion.p variants={childVariants}>
               Hey, I’m <strong>Kanaiya Films</strong>. What started as a tiny passion for capturing
               small, candid moments rapidly blossomed into my full-time dream—documenting breathtaking 
@@ -81,17 +82,7 @@ export default function AboutPage() {
           </div>
 
           <motion.div variants={childVariants} className="mt-10">
-            <Link
-              to="/contact"
-              className="inline-block group relative z-0 h-14 overflow-hidden rounded-[5px] bg-[#2d2926] px-12 py-4 text-[16px] font-medium text-white shadow-lg hover:shadow-2xl transition-all duration-300"
-            >
-              <span className="relative z-10 transition-colors duration-300 group-hover:text-[#2d2926]">
-                Let’s Create Timeless Art
-              </span>
-              <span className="absolute inset-0 overflow-hidden rounded-[5px]">
-                <span className="absolute left-0 aspect-square w-full origin-center translate-x-full rounded-full bg-[#c1b1a2] transition-all duration-500 group-hover:-translate-x-0 group-hover:scale-150"></span>
-              </span>
-            </Link>
+            <Button text="Let’s Create Timeless Art" link="/contact" className="h-14 px-12 py-4" />
           </motion.div>
         </motion.div>
 

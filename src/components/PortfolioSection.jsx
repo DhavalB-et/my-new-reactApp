@@ -22,14 +22,14 @@ const PortfolioSection = () => {
   ];
 
   return (
-    <section ref={ref} className="py-16 px-6 md:px-16">
-      <div className="grid md:grid-cols-2 gap-10 items-center">
+    <section ref={ref} className="py-20 md:py-24 px-6">
+      <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
         {/* LEFT SIDE — slides in from the left */}
         <div className="reveal-left">
-          <h2 className="text-3xl md:text-4xl font-bold text-[var(--text-color)] mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold text-[var(--text-color)] mb-6">
             Capturing Emotions, Not Just Photos
           </h2>
-          <p className="text-gray-600 leading-relaxed mb-8">
+          <p className="text-lg md:text-xl text-gray-600 leading-relaxed mb-10">
             Every picture tells a story — your story. From weddings to maternity,
             from intimate portraits to grand events, we focus on capturing real
             emotions that last a lifetime. Let's make your memories timeless.

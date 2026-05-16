@@ -2,8 +2,8 @@ import ServiceGallery from "../../components/ServiceGallery";
 
 export default function PreWedding() {
   return (
-    <div className="pt-20">
-      <h1 className="text-3xl font-bold text-center mb-6">Pre-Wedding Photography</h1>
+    <div className="pt-32 pb-20 md:pb-24 max-w-7xl mx-auto px-6 min-h-screen">
+      <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-[var(--text-color)] mb-12 text-center capitalize">Pre-Wedding Photography</h1>
       <ServiceGallery service="pre-wedding" />
     </div>
   );

@@ -128,13 +128,13 @@ export default function ServicePage() {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
-      className="max-w-7xl mx-auto px-4 py-16 pt-[120px]"
+      className="max-w-7xl mx-auto px-6 py-20 md:py-24 pt-32 min-h-screen"
     >
       <motion.h1 
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, delay: 0.2 }}
-        className="text-4xl md:text-5xl font-extrabold mb-12 capitalize text-center text-[var(--text-color)] tracking-tight"
+        className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-[var(--text-color)] mb-12 text-center capitalize"
       >
         {slug.replace("-", " ")}
       </motion.h1>

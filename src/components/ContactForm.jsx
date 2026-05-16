@@ -1,6 +1,7 @@
 // src/components/ContactForm.jsx
 import { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
+import Button from "./Button";
 
 export default function ContactForm() {
   const form = useRef();
@@ -32,12 +33,12 @@ export default function ContactForm() {
   };
 
   return (
-    <section className="bg-gray-100 py-16" id="contact">
+    <section className="bg-gray-100 py-20 md:py-24" id="contact">
       <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
         
         {/* Left: Form */}
         <form ref={form} onSubmit={sendEmail} className="bg-white shadow-lg rounded-2xl p-8">
-          <h2 className="text-2xl font-semibold mb-6 text-gray-800">Contact Us</h2>
+          <h2 className="text-4xl md:text-5xl font-bold mb-8 text-gray-800">Contact Us</h2>
 
           <input
             type="text"
@@ -79,32 +80,19 @@ export default function ContactForm() {
             </div>
           )}
 
-          <button
+          <Button
             type="submit"
+            text={status === "submitting" ? "Sending..." : "Send Message"}
             disabled={status === "submitting"}
-            className={`group relative z-0 h-12 overflow-hidden rounded-[5px] px-10 py-3 text-[16px] text-[var(--white-color)] shadow-sm transition-all duration-300 ${
-              status === "submitting" 
-                ? "bg-gray-400 cursor-not-allowed" 
-                : "bg-[var(--text-color)] hover:shadow-md"
-            }`}
-          >
-            <span className="relative z-10 transition-colors duration-300 group-hover:text-[var(--text-color)]">
-              {status === "submitting" ? "Sending..." : "Send Message"}
-            </span>
-            {status !== "submitting" && (
-              <span className="absolute inset-0 overflow-hidden rounded-[5px]">
-                <span className="absolute left-0 aspect-square w-full origin-center translate-x-full rounded-full bg-[var(--bg-color)] transition-all duration-500 group-hover:-translate-x-0 group-hover:scale-150"></span>
-              </span>
-            )}
-          </button>
+          />
         </form>
 
         {/* Right: Studio Info */}
           <div>
-            <h3 className="text-3xl md:text-4xl font-bold text-[var(--text-color)] mb-4">
+            <h3 className="text-4xl md:text-5xl font-bold text-[var(--text-color)] mb-6">
               Let’s Work Together
             </h3>
-            <p className="text-gray-600 mb-6">
+            <p className="text-lg md:text-xl text-gray-600 mb-8 leading-relaxed">
               Have a shoot idea, event, or collaboration? Drop us a message — we’ll reply soon!
             </p>
 

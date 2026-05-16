@@ -68,14 +68,14 @@ export default function ProjectsPage() {
   };
 
   return (
-    <div className="max-w-7xl mx-auto px-4 py-16 min-h-screen pt-[120px]">
+    <div className="max-w-7xl mx-auto px-6 py-20 md:py-24 pt-32 min-h-screen">
       <motion.div 
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
         className="text-center mb-16 relative"
       >
-        <h1 className="text-5xl md:text-6xl font-extrabold mb-6 tracking-tight text-[var(--text-color)]">
+        <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-[var(--text-color)] mb-6">
           Our Projects
         </h1>
         <p className="text-lg md:text-xl text-gray-500 max-w-2xl mx-auto leading-relaxed">
