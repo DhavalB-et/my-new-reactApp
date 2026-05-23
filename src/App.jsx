@@ -73,7 +73,9 @@ function AppInner() {
 function App() {
   return (
     <Router>
-      <AppInner />
+      <div className="w-full overflow-x-hidden relative">
+        <AppInner />
+      </div>
     </Router>
   );
 }

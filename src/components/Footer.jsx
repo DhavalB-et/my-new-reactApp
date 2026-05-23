@@ -8,7 +8,7 @@ const Footer = () => {
       {/* Wavy Top SVG */}
       <div className="absolute -top-[1px] left-0 w-full overflow-hidden leading-none rotate-180">
         <svg
-          className="relative block w-full h-20"
+          className="relative block h-20 animate-wave"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 1200 120"
           preserveAspectRatio="none"
@@ -21,7 +21,7 @@ const Footer = () => {
       </div>
 
       {/* Footer Content */}
-      <div className="relative px-6 py-16 md:px-12 md:py-20 grid md:grid-cols-3 gap-10 text-left">
+      <div className="relative px-6 pt-24 pb-16 md:px-12 md:pt-28 md:pb-20 grid md:grid-cols-3 gap-10 text-left">
         {/* Logo / About */}
         <div className="">
           <a href="/">

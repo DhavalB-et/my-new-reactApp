@@ -9,6 +9,11 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  overflow-x: hidden;
 }
 
 /* ─── Scroll Reveal Animations ─────────────────────────────────────── */
@@ -98,5 +103,18 @@ html {
   background-color: var(--bg-color) !important;
   opacity: 1 !important;
   transform: scale(1.2);
+}
+
+/* Footer Wave Animation */
+@keyframes wave-motion {
+  0% { transform: translateX(0) scaleY(1); }
+  50% { transform: translateX(-25%) scaleY(0.8); }
+  100% { transform: translateX(0) scaleY(1); }
+}
+
+.animate-wave {
+  width: 200%;
+  animation: wave-motion 12s ease-in-out infinite;
+  transform-origin: bottom center;
 }
 
