@@ -37,6 +37,8 @@ function PageWrapper({ children }) {
 // Root app — Lenis is initialized here so it covers all pages
 function AppInner() {
   useSmoothScroll();
+  const location = useLocation();
+  const isServicePage = location.pathname.startsWith("/services/");
 
   return (
     <>
@@ -65,7 +67,7 @@ function AppInner() {
           <Route path="/services/:slug" element={<ServicePage />} />
         </Routes>
       </PageWrapper>
-      <Footer />
+      {!isServicePage && <Footer />}
     </>
   );
 }

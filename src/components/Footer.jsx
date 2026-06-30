@@ -68,7 +68,7 @@ const Footer = () => {
           <h3 className="text-lg font-semibold mb-3">Follow Us</h3>
           <div className="flex justify-start md:justify-start gap-4 mb-4">
             <a
-              href="https://facebook.com"
+              href="https://www.facebook.com/share/1J9fyevNDb/"
               target="_blank"
               rel="noreferrer"
               className="bg-[var(--text-color)] text-[var(--white-color)] p-3 rounded-full hover:bg-[var(--link-hover-color)] hover:-translate-y-1 transition-all duration-300"
